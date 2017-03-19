@@ -220,5 +220,5 @@ gulp.task('watch', function () {
 
 gulp.task('setup', ['setup:settings', 'setup:mixins', 'setup:functions']);
 gulp.task('serve', ['watch']);
-gulp.task('test', ['css', 'minify', 'docs:css']);
-gulp.task('default', ['css', 'minify', 'watch']);
+gulp.task('test', ['css', 'minify', 'twig']);
+gulp.task('default', ['css', 'minify', 'twig', 'watch']);
