@@ -118,7 +118,6 @@ gulp.task('minify', ['css'], function () {
 	return css;
 });
 
-
 gulp.task('twig', function () {
 	var css = gulp
 	.src(build.twig + '*.twig')
