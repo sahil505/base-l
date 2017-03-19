@@ -29,6 +29,7 @@ $menu-divider-color: rgba(0, 0, 0, 0.125) !default;
 //
 // @scss
 .c-menu-container {
+	@include shadow(1);
 	text-align: left;
 	background-color: $menu-background-color;
 	border-radius: $menu-border-radius;
@@ -38,7 +39,6 @@ $menu-divider-color: rgba(0, 0, 0, 0.125) !default;
 	right: 0;
 	display: none;
 	overflow: auto;
-	@include shadow(1);
 }
 
 .c-menu {
@@ -63,6 +63,7 @@ $menu-divider-color: rgba(0, 0, 0, 0.125) !default;
 	}
 
 	&-link {
+		@include type(menu);
 		white-space: nowrap;
 		text-decoration: none;
 		color: $menu-link-color;
@@ -89,7 +90,6 @@ $menu-divider-color: rgba(0, 0, 0, 0.125) !default;
 				color: $menu-link-hover-color;
 			}
 		}
-		@include type(menu);
 	}
 
 	&-divider {
