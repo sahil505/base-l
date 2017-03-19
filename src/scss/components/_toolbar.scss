@@ -37,6 +37,7 @@ $toolbar-action-hover-color: $default-action-color-hover !default;
 // 9. Prevent deafult browser outline halo
 //
 .c-toolbar {
+	@include shadow(2);
 	background-color: $toolbar-background-color;
 	border-radius: $toolbar-border-radius;
 	position: relative;
@@ -52,6 +53,7 @@ $toolbar-action-hover-color: $default-action-color-hover !default;
 	}
 
 	&-action {
+		@include type(button);
 		line-height: unitless($toolbar-height, map-get(map-get($type-styles, button), font-size));
 		text-align: center; // [4]
 		vertical-align: middle; // [2]
@@ -76,7 +78,6 @@ $toolbar-action-hover-color: $default-action-color-hover !default;
 			background-color: $toolbar-action-hover-bg;
 			color: $toolbar-action-hover-color;
 		}
-		@include type(button);
 	}
 
 	&-icon {
@@ -86,5 +87,4 @@ $toolbar-action-hover-color: $default-action-color-hover !default;
 			text-decoration: none;
 		}
 	}
-	@include shadow(2);
 }
