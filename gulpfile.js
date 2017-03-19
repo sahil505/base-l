@@ -1,5 +1,7 @@
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
 var del = require('del');
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
@@ -9,15 +11,32 @@ var sourcemaps = require('gulp-sourcemaps');
 var cssnano = require('gulp-cssnano');
 var postcss = require('gulp-postcss');
 var stylefmt = require('gulp-stylefmt');
+var nunjucks = require('gulp-nunjucks-render');
+var data = require('gulp-data');
 var sorting = require('postcss-sorting');
 var torem = require('postcss-pxtorem');
+var moment = require('moment');
 var sortOrder = require('./.postcss-sorting.json');
 var pkg = require('./package.json');
+
+var manageEnvironment = function (environment) {
+	environment.addFilter('moment', function (date, format, fromNow) {
+		if (fromNow) {
+			date = moment(date, format).fromNow();
+		} else {
+			date = moment(date, format);
+		}
+
+		return date;
+	});
+};
 
 // Config
 var build = {
 	css: './dist/assets/css',
-	docs: './docs/_media/',
+	html: './dist/views/',
+	twig: './src/views/',
+	data: './src/mock/',
 	scss: './src/scss/'
 };
 
@@ -99,6 +118,27 @@ gulp.task('minify', ['css'], function () {
 	return css;
 });
 
+
+gulp.task('twig', function () {
+	var css = gulp
+	.src(build.twig + '*.twig')
+	.pipe(data(function (file) {
+		var data = JSON.parse(fs.readFileSync(build.data + path.basename(file.path, '.twig') + '.json'));
+		data.version = pkg.version;
+		return data;
+	}))
+	.pipe(nunjucks({
+		path: [build.twig],
+		manageEnv: manageEnvironment
+	}))
+	.pipe(rename({
+		extname: '.html'
+	}))
+	.pipe(gulp.dest(build.html));
+
+	return css;
+});
+
 gulp.task('docs:css', function () {
 	var css = gulp
 	.src(build.docs + '*.scss')
@@ -175,7 +215,8 @@ gulp.task('setup:functions', function () {
 
 gulp.task('watch', function () {
 	gulp.watch('src/scss/**/*.scss', ['css', 'minify']);
-	gulp.watch('docs/_media/*.scss', ['docs:css']);
+	gulp.watch('src/views/**/*.twig', ['twig']);
+	gulp.watch('src/mock/**/*.json', ['twig']);
 });
 
 gulp.task('setup', ['setup:settings', 'setup:mixins', 'setup:functions']);
