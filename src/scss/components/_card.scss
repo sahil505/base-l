@@ -1,0 +1,186 @@
+//------------------------------------------------------------------------------
+// @component: Card
+//------------------------------------------------------------------------------
+// @description
+//
+//------------------------------------------------------------------------------
+
+//
+// @settings
+
+// Layout Variables
+$card-spacing: 16px !default;
+$card-spacing-sm: 12px !default;
+$card-spacing-lg: 24px !default;
+$card-border-radius: $default-border-radius !default;
+$card-media-size: 40px !default;
+$card-media-margin: 0 !default;
+$card-border-style: solid !default;
+$card-border-size: 1px !default;
+
+
+// Theme Variables
+$card-background-color: $white !default;
+$card-border-color: rgba(0, 0, 0, 0.125) !default;
+$card-media-color: $default-secondary-color !default;
+$card-media-read-color: $default-primary-color !default;
+$card-footer-color: $default-action-bg !default;
+$card-action-color: $default-action-color !default;
+$card-action-hover-bg: $default-action-bg-hover !default;
+$card-action-hover-color: $default-action-color-hover !default;
+
+
+//
+// @scss
+.c-card {
+	@include shadow(2);
+	background-color: $card-background-color;
+	border-radius: $card-border-radius;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: $card-spacing;
+
+	@media (min-width: $bp-lg) {
+		&-deck {
+			display: flex;
+			flex-flow: row wrap;
+		}
+
+		&-deck .c-card {
+			display: flex;
+			flex: 1 0 0%;
+			flex-direction: column;
+			min-width: calc((100% / 2) - (12px));
+			max-width: calc((100% / 2) - (12px));
+			margin-bottom: $card-spacing-lg;
+			margin-left: $card-spacing-lg;
+
+			&:first-child,
+			&:nth-child(2n+1) {
+				margin-left: 0;
+			}
+		}
+	}
+
+	&-body {
+		flex: 1 1 auto;
+		margin-bottom: $card-spacing;
+	}
+
+	&-media {
+		display: flex;
+		float: left;
+		flex: 1;
+		flex-direction: column;
+		margin: $card-spacing $card-spacing 0;
+	}
+
+	&-media-icon {
+		color: $card-media-color;
+		width: $card-media-size;
+		height: $card-media-size;
+		margin-right: $card-media-margin;
+
+		&-read {
+			color: $card-media-read-color;
+		}
+	}
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+		margin-right: $card-spacing;
+	}
+
+	&-title {
+		@include type(headline);
+		margin-top: $card-spacing-lg;
+		margin-bottom: $card-spacing-sm;
+		@media (min-width: $bp-lg) {
+			margin-bottom: 0;
+		}
+
+		&-link {
+			line-height: 1;
+		}
+	}
+
+	&-text {
+		@include type(body1);
+		margin: $card-spacing 0 0;
+
+	}
+
+	&-footer {
+		background-color: $card-footer-color;
+		border-top: $card-border-size $card-border-style $card-border-color;
+
+		&:last-child {
+			border-radius: 0 0 $card-border-radius $card-border-radius;
+		}
+	}
+
+	&-data,
+	&-action {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&-data {
+		float: left;
+		flex: 1;
+	}
+
+	&-action {
+		display: flex;
+		float: right;
+	}
+
+	&-action-item {
+		position: relative;
+	}
+
+	&-link,
+	&-data-item {
+		display: inline-block;
+		padding: $card-spacing;
+	}
+
+	&-data-item:first-of-type {
+		padding-right: 0;
+	}
+
+	&-link {
+		color: $card-action-color;
+
+		&:hover,
+		&:focus {
+			background-color: $card-action-hover-bg;
+			color: $card-action-hover-color;
+		}
+
+		&-icon {
+			margin-right: 0;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	&-cat {
+		&-title {
+			@include type(headline);
+			border-bottom: $card-border-size $card-border-style $card-border-color;
+			margin-top: $card-spacing;
+			margin-bottom: $card-spacing-lg;
+			padding-bottom: ($card-spacing / 4);
+
+			&-link {
+				line-height: 1;
+			}
+		}
+	}
+}
