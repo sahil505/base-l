@@ -5,54 +5,54 @@
 				{% for item in forums %}
 					{% if item.cat === 1 %}
 						{% if loop.first %}
-							<div class="c-card-cat t-card-cat">
-								<h2 class="c-card-cat-title t-card-cat-title">
-									<a class="c-card-cat-link t-card-cat-link" href="#">{{ item.name }}</a>
+							<div class="c-forum-cat t-forum-cat">
+								<h2 class="c-forum-cat-title t-forum-cat-title">
+									<a class="c-forum-cat-link t-forum-cat-link" href="#">{{ item.name }}</a>
 								</h2>
-								<div class="c-card-deck t-card-deck">
+								<div class="c-forum-deck t-forum-deck">
 						{% else %}
 								</div>
 							</div>
-							<div class="c-card-cat t-card-cat">
-								<h2 class="c-card-cat-title t-card-cat-title">
-									<a class="c-card-cat-link t-card-cat-link" href="#">{{ item.name }}</a>
+							<div class="c-forum-cat t-forum-cat">
+								<h2 class="c-forum-cat-title t-forum-cat-title">
+									<a class="c-forum-cat-link t-forum-cat-link" href="#">{{ item.name }}</a>
 								</h2>
-								<div class="c-card-deck t-card-deck">
+								<div class="c-forum-deck t-forum-deck">
 						{% endif %}
 					{% else %}
-									<div class="c-card t-card">
-										<div class="c-card-body t-block">
-											<div class="c-card-media t-card-media">
-												<svg class="o-icon c-card-media-icon t-card-media-icon{% if item.status === 1 %} c-card-media-icon-read t-card-media-icon-read{% endif %}"><use xlink:href="#{{ item.type }}"></use></svg>
+									<div class="c-forum t-forum">
+										<div class="c-forum-body t-block">
+											<div class="c-forum-media t-forum-media">
+												<svg class="o-icon c-forum-media-icon t-forum-media-icon{% if item.status === 1 %} c-forum-media-icon-read t-forum-media-icon-read{% endif %}"><use xlink:href="#{{ item.type }}"></use></svg>
 											</div>
-											<div class="c-card-info t-card-info">
-												<h4 class="c-card-title t-card-title">
-													<a class="c-card-title-link t-card-title-link" href="#">{{ item.name }}</a>
+											<div class="c-forum-info t-forum-info">
+												<h4 class="c-forum-title t-forum-title">
+													<a class="c-forum-title-link t-forum-title-link" href="#">{{ item.name }}</a>
 												</h4>
 												{% if item.desc %}
-													<p class="c-card-text t-card-text">
+													<p class="c-forum-text t-forum-text">
 														{{ item.desc }}
 													</p>
 												{% endif %}
 											</div>
 										</div>
-										<div class="c-card-footer t-card-footer">
-											<ul class="c-card-data t-card-data">
-												<li class="c-card-data-item t-card-data-item"><svg class="o-icon c-card-data-icon t-card-data-icon"><use xlink:href="#topic"></use></svg> {{ item.topics }}</li>
-												<li class="c-card-data-item t-card-data-item"><svg class="o-icon c-card-data-icon t-card-data-icon"><use xlink:href="#replies"></use></svg> {{ item.posts }}</li>
+										<div class="c-forum-footer t-forum-footer">
+											<ul class="c-forum-data t-forum-data">
+												<li class="c-forum-data-item t-forum-data-item"><svg class="o-icon c-forum-data-icon t-forum-data-icon"><use xlink:href="#topic"></use></svg> {{ item.topics }}</li>
+												<li class="c-forum-data-item t-forum-data-item"><svg class="o-icon c-forum-data-icon t-forum-data-icon"><use xlink:href="#replies"></use></svg> {{ item.posts }}</li>
 											</ul>
-											<ul class="c-card-action t-card-action">
+											<ul class="c-forum-action t-forum-action">
 												{% if item.subs %}
-													<li class="c-card-action-item t-card-action-item c-menu-toggle t-menu-toggle">
-														<a class="c-card-link t-card-link" href="" data-toggle="tooltip" data-placement="top" title="SubForums">
-															<svg class="o-icon c-card-link-icon t-card-link-icon"><use xlink:href="#more-v"></use></svg>
+													<li class="c-forum-action-item t-forum-action-item c-menu-toggle t-menu-toggle">
+														<a class="c-forum-link t-forum-link" href="" data-toggle="tooltip" data-placement="top" title="SubForums">
+															<svg class="o-icon c-forum-link-icon t-forum-link-icon"><use xlink:href="#more-v"></use></svg>
 														</a>
 														<div class="c-menu-container t-menu-container">
 															<ul class="c-menu t-menu">
 																{% for sub in item.subs %}
 																	<li class="c-menu-item t-menu-item">
 																		<a class="c-menu-link t-menu-item" href="">
-																			<svg class="o-icon c-menu-link-icon t-menu-card-icon"><use xlink:href="#forum-sub"></use></svg> <span class="c-menu-text t-card-text">{{ sub.name }}</span>
+																			<svg class="o-icon c-menu-link-icon t-menu-forum-icon"><use xlink:href="#forum-sub"></use></svg> <span class="c-menu-text t-forum-text">{{ sub.name }}</span>
 																		</a>
 																	</li>
 																{% endfor %}
@@ -61,9 +61,9 @@
 													</li>
 												{% endif %}
 												{% if item.last_subject %}
-													<li class="c-card-action-item t-card-action-item">
-														<a class="c-card-link t-card-link" style="color: {{ item.last_color}}" href="" data-toggle="tooltip" data-placement="top" title="{{ item.last_subject }}, by {{ item.last_name }}, {{ item.last_time }}">
-															<svg class="o-icon c-card-link-icon t-card-link-icon"><use xlink:href="#last-page"></use></svg>
+													<li class="c-forum-action-item t-forum-action-item">
+														<a class="c-forum-link t-forum-link" style="color: {{ item.last_color}}" href="" data-toggle="tooltip" data-placement="top" title="{{ item.last_subject }}, by {{ item.last_name }}, {{ item.last_time }}">
+															<svg class="o-icon c-forum-link-icon t-forum-link-icon"><use xlink:href="#last-page"></use></svg>
 														</a>
 													</li>
 												{% endif %}
