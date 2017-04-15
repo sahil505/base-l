@@ -85,7 +85,7 @@ $card-action-hover-color: $default-action-color-hover !default;
 	}
 
 	&-text {
-		@include type(body1);
+		@include type(body2);
 		margin: $card-spacing 0 0;
 
 	}
