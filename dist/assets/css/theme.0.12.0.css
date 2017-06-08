@@ -1,3 +1,89 @@
+.o-action-bar {
+	background-color: #f5f5f5;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+
+.o-action-bar-avatar {
+	width: 40px;
+	height: 40px;
+	margin: 0.5rem 0 0.5rem 1rem;
+	padding: 0;
+}
+
+.o-action-bar-title {
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 1.6;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	float: left;
+	-webkit-flex: 1;
+	flex: 1;
+	margin-bottom: 0;
+	padding: 1rem;
+}
+
+.o-action-bar-list {
+	float: left;
+	-webkit-flex: 1;
+	flex: 1;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.o-action-bar-list-item {
+	display: -webkit-flex;
+	display: flex;
+	float: left;
+	padding: 1rem;
+}
+
+.o-action-bar-list-item:first-of-type {
+	padding-right: 0;
+}
+
+.o-action-bar-actions {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.o-action-bar-action {
+	display: -webkit-flex;
+	display: flex;
+	float: right;
+}
+
+.o-action-bar-action-item {
+	position: relative;
+}
+
+.o-action-bar-action-link {
+	color: #757575;
+	display: inline-block;
+	padding: 1rem;
+}
+
+.o-action-bar-action-link:hover,
+.o-action-bar-action-link:focus {
+	background-color: #eeeeee;
+	color: #258cf4;
+}
+
+.o-action-bar-action-link-icon {
+	margin-right: 0;
+}
+
+.o-action-bar-action-link-icon:hover {
+	text-decoration: none;
+}
+
 .c-forum {
 	background-color: #ffffff;
 	border-radius: 2px;
